@@ -1,0 +1,16 @@
+#!/bin/bash
+#获取登录者的用户名
+user=$USER
+#获取登录者的IP地址
+ip=${SSH_CLIENT%% *}
+#获取登录的时间
+time=$(date +%s)
+#服务器的IP地址
+hostname=$(hostname)
+mipaddr=$(/usr/sbin/ip  addr | awk '/^[0-9]+: / {}; /inet.*global/ {print gensub(/(.*)\/(.*)/, "\\1", "g", $2)}' | awk BEGIN{RS=EOF}'{gsub(/\n/," ，");print}')
+token=demo-token
+requrl='http://hostname_or_IP:9090/mail'
+
+echo "$time,$user,$ip,$hostname,$mipaddr" >> /var/tmp/.$user.auth.log
+
+curl -H "Authorization: Token ${token}" -d "mip=${mipaddr}&dip=${ip}&dhostname=${hostname}&dtime=${time}&duser=${user}" ${requrl} >/dev/null 2>&1 &

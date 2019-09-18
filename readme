@@ -7,3 +7,5 @@
 		dhostname # login hostname
 		duser 	# login used username
 		dtime 	# login timestamp(ms)
+
+  copy sshrc to /etc/ssh/ and change token requrl
