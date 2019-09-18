@@ -1,5 +1,5 @@
 
-  POST http://{{hostname}}:9090/mail with token
+  POST http://{hostname}:9090/mail with token
   token scheme: Token {token_string}
   data format:
 		mip	# login system IP
