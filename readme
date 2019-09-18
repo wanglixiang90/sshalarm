@@ -1,0 +1,9 @@
+
+  POST http://{{hostname}}:9090/mail with token
+  data format:
+		mip 	# login system IP
+		dip		# remote used IP
+		dhostname # login hostname
+		duser	# login used username
+		dtime	# login timestamp(ms)
+
